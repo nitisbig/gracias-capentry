@@ -4,44 +4,33 @@ import { site } from "../data/site";
 const links = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
-  { href: "#work", label: "Our Work" },
+  { href: "#work", label: "Work" },
   { href: "#reviews", label: "Reviews" },
   { href: "#contact", label: "Contact" },
 ];
 ---
 
-<header
-  id="site-nav"
-  class="fixed inset-x-0 top-0 z-50 transition-all duration-500"
-  data-nav
->
+<header id="nav" class="fixed inset-x-0 top-0 z-50" data-nav>
   <nav
-    class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8"
+    class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 transition-all duration-500 sm:px-8"
   >
     <a href="#top" class="group flex items-center gap-3">
       <span
-        class="flex h-10 w-10 items-center justify-center rounded-md border border-gold/50 font-display text-lg font-bold text-gold transition-colors group-hover:bg-gold group-hover:text-ink"
+        class="nav-fg grid h-9 w-9 place-items-center border border-current font-display text-sm font-bold"
+        >G</span
       >
-        G
-      </span>
-      <span class="leading-tight">
-        <span
-          class="block font-display text-sm font-700 uppercase tracking-[0.18em] text-bone"
-          >Garcia's</span
-        >
-        <span
-          class="block font-display text-[0.65rem] uppercase tracking-[0.3em] text-stone"
-          >Wood &amp; More</span
-        >
-      </span>
+      <span
+        class="nav-fg font-display text-sm font-semibold uppercase tracking-[0.26em]"
+        >Garcia's</span
+      >
     </a>
 
-    <div class="hidden items-center gap-8 lg:flex">
+    <div class="hidden items-center gap-9 lg:flex">
       {
         links.map((l) => (
           <a
             href={l.href}
-            class="font-display text-xs font-600 uppercase tracking-[0.2em] text-bone/80 transition-colors hover:text-gold"
+            class="nav-link nav-fg font-display text-[0.7rem] font-semibold uppercase tracking-[0.2em]"
           >
             {l.label}
           </a>
@@ -49,9 +38,10 @@ const links = [
       }
       <a
         href={site.phoneHref}
-        class="rounded-sm border border-gold bg-gold px-5 py-2.5 font-display text-xs font-700 uppercase tracking-[0.18em] text-ink transition-all hover:bg-gold-bright"
+        data-nav-cta
+        class="border border-white/55 px-6 py-2.5 font-display text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-heading"
       >
-        Call Now
+        Get in Touch
       </a>
     </div>
 
@@ -59,45 +49,30 @@ const links = [
       type="button"
       data-menu-btn
       aria-label="Open menu"
-      aria-expanded="false"
-      class="flex h-10 w-10 items-center justify-center text-bone lg:hidden"
+      class="nav-fg lg:hidden"
     >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="7" x2="21" y2="7"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="17" x2="21" y2="17"></line>
-      </svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
     </button>
   </nav>
 
   <!-- Mobile menu -->
   <div
     data-menu
-    class="pointer-events-none fixed inset-0 z-40 flex translate-y-[-100%] flex-col bg-ink/98 opacity-0 backdrop-blur transition-all duration-500 lg:hidden"
+    class="pointer-events-none fixed inset-0 z-40 flex translate-y-[-100%] flex-col bg-bg opacity-0 transition-all duration-500 lg:hidden"
   >
-    <div class="flex items-center justify-between px-5 py-5">
-      <span class="font-display text-sm uppercase tracking-[0.2em] text-bone"
-        >Menu</span
-      >
-      <button
-        type="button"
-        data-menu-close
-        aria-label="Close menu"
-        class="flex h-10 w-10 items-center justify-center text-bone"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-          <line x1="6" y1="18" x2="18" y2="6"></line>
-        </svg>
+    <div class="flex items-center justify-between border-b border-line px-5 py-5">
+      <span class="font-display text-sm uppercase tracking-[0.2em] text-heading">Menu</span>
+      <button type="button" data-menu-close aria-label="Close menu" class="text-heading">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
       </button>
     </div>
-    <div class="flex flex-1 flex-col justify-center gap-2 px-8">
+    <div class="flex flex-1 flex-col justify-center gap-1 px-8">
       {
         links.map((l) => (
           <a
             href={l.href}
             data-menu-link
-            class="border-b border-bone/10 py-4 font-display text-2xl uppercase tracking-[0.12em] text-bone transition-colors hover:text-gold"
+            class="border-b border-line py-4 font-display text-2xl font-light uppercase tracking-[0.14em] text-heading transition-colors hover:text-gold"
           >
             {l.label}
           </a>
@@ -105,7 +80,7 @@ const links = [
       }
       <a
         href={site.phoneHref}
-        class="mt-6 rounded-sm bg-gold px-6 py-4 text-center font-display text-sm font-700 uppercase tracking-[0.18em] text-ink"
+        class="mt-8 bg-gold px-6 py-4 text-center font-display text-sm font-semibold uppercase tracking-[0.18em] text-white"
       >
         Call {site.phone}
       </a>
@@ -116,7 +91,7 @@ const links = [
 <script>
   const nav = document.querySelector("[data-nav]");
   const onScroll = () => {
-    if (window.scrollY > 40) nav?.classList.add("nav-scrolled");
+    if (window.scrollY > 50) nav?.classList.add("nav-scrolled");
     else nav?.classList.remove("nav-scrolled");
   };
   onScroll();
@@ -138,9 +113,37 @@ const links = [
 </script>
 
 <style>
-  [data-nav].nav-scrolled {
-    background-color: color-mix(in srgb, #14110f 92%, transparent);
+  /* default: light text over the dark hero */
+  .nav-fg { color: #ffffff; transition: color 0.4s ease; }
+
+  [data-nav].nav-scrolled nav {
+    background-color: color-mix(in srgb, #ffffff 94%, transparent);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid color-mix(in srgb, #b89047 22%, transparent);
+    box-shadow: 0 1px 0 #e7e1d7;
   }
+  [data-nav].nav-scrolled .nav-fg { color: #2a2420; }
+  [data-nav].nav-scrolled [data-nav-cta] {
+    border-color: #2a2420;
+    color: #2a2420;
+  }
+  [data-nav].nav-scrolled [data-nav-cta]:hover {
+    background-color: #2a2420;
+    color: #ffffff;
+  }
+
+  /* animated gold underline */
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    height: 1px;
+    width: 100%;
+    background: #b89047;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
 </style>

@@ -5,86 +5,73 @@ const heroImg =
   "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=2000&q=80";
 ---
 
-<section id="top" class="relative flex min-h-screen items-center overflow-hidden">
-  <!-- Background -->
+<section
+  id="top"
+  class="relative flex min-h-screen items-center justify-center overflow-hidden bg-espresso"
+>
+  <!-- Background image, deeply tinted to espresso -->
   <div class="absolute inset-0">
     <img
       src={heroImg}
-      alt="Carpenter shaping a piece of fine wood in the workshop"
-      class="h-full w-full object-cover"
+      alt="Hand-finished fine woodwork in the workshop"
+      class="h-full w-full object-cover opacity-25"
       fetchpriority="high"
     />
+    <div class="absolute inset-0 bg-espresso/70"></div>
     <div
-      class="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/70 to-ink"
-    >
-    </div>
-    <div
-      class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/40 to-transparent"
+      class="absolute inset-0"
+      style="background:radial-gradient(circle at 50% 38%, transparent 0%, rgba(38,30,23,0.6) 78%)"
     >
     </div>
   </div>
 
-  <div class="relative mx-auto w-full max-w-7xl px-5 pt-32 pb-20 sm:px-8">
-    <div class="max-w-3xl">
-      <p class="eyebrow reveal">{site.tagline}</p>
+  <!-- Centered editorial content -->
+  <div class="reveal relative px-6 text-center">
+    <span
+      class="mx-auto grid h-16 w-16 place-items-center border border-gold/70 font-display text-2xl font-light tracking-tight text-gold"
+    >
+      G
+    </span>
 
-      <h1
-        class="reveal heading-xl mt-6 text-5xl text-bone sm:text-6xl lg:text-7xl"
-        style="transition-delay:80ms"
-      >
-        Custom Carpentry,
-        <span class="block text-gold">Crafted to Last.</span>
-      </h1>
+    <h1 class="heading-xl heading-hero mt-9 text-white">
+      Garcia's Wood<br class="hidden sm:block" /> and More
+    </h1>
 
-      <p
-        class="reveal mt-7 max-w-xl text-lg leading-relaxed text-bone/80"
-        style="transition-delay:160ms"
-      >
-        From bespoke wardrobes and built-in storage to decks, fencing and finish
-        work — Garcia's Wood and More brings precise, dependable craftsmanship to
-        homes across {site.area}.
-      </p>
+    <p
+      class="eyebrow mt-7"
+      style="color:var(--color-gold-bright)"
+    >
+      {site.tagline}
+    </p>
 
-      <div
-        class="reveal mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
-        style="transition-delay:240ms"
-      >
-        <a
-          href={site.phoneHref}
-          class="group inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-8 py-4 font-display text-sm font-700 uppercase tracking-[0.18em] text-ink transition-all hover:bg-gold-bright"
-        >
-          Call {site.phone}
-        </a>
-        <a
-          href="#contact"
-          class="inline-flex items-center justify-center gap-2 rounded-sm border border-bone/30 px-8 py-4 font-display text-sm font-600 uppercase tracking-[0.18em] text-bone transition-all hover:border-gold hover:text-gold"
-        >
-          Request a Quote
-        </a>
-      </div>
+    <p class="mx-auto mt-7 max-w-xl text-base leading-relaxed text-white/70">
+      Custom carpentry, wardrobes, decks and finish work — handcrafted with
+      precision for homes across {site.area}.
+    </p>
 
-      <div
-        class="reveal mt-12 flex items-center gap-4"
-        style="transition-delay:320ms"
-      >
-        <span class="text-lg tracking-widest text-gold">★★★★★</span>
-        <p class="text-sm text-bone/70">
-          <span class="font-700 text-bone">{site.rating}/5</span> from {
-            site.reviewCount
-          } Google reviews
-        </p>
-      </div>
+    <div
+      class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+    >
+      <a href={site.phoneHref} class="btn-gold group gap-2.5">
+        Call {site.phone}
+        <svg class="transition-transform duration-300 group-hover:translate-x-1" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#contact" class="btn-light">Request a Quote</a>
+    </div>
+
+    <div class="mt-10 flex items-center justify-center gap-3">
+      <span class="tracking-[0.3em] text-gold">★★★★★</span>
+      <span class="text-xs uppercase tracking-[0.2em] text-white/60">
+        {site.rating}/5 · {site.reviewCount} Google reviews
+      </span>
     </div>
   </div>
 
-  <!-- Scroll cue -->
+  <!-- scroll cue -->
   <div
-    class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-stone md:flex"
+    class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
   >
-    <span class="font-display text-[0.6rem] uppercase tracking-[0.3em]"
-      >Scroll</span
-    >
-    <span class="h-10 w-px animate-pulse bg-gradient-to-b from-gold to-transparent"
-    ></span>
+    <span class="font-display text-[0.6rem] uppercase tracking-[0.3em] text-white/50">Scroll</span>
+    <span class="h-10 w-px bg-gradient-to-b from-gold to-transparent"></span>
   </div>
 </section>

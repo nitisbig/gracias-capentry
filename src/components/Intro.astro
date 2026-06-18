@@ -1,0 +1,83 @@
+---
+import { site } from "../data/site";
+
+const contact = [
+  { label: "Phone", value: site.phone, href: site.phoneHref },
+  { label: "Email", value: site.email, href: `mailto:${site.email}` },
+  { label: "Service Area", value: site.area, href: null },
+];
+
+const facts = [
+  { v: `${site.rating}★`, l: "Google Rating" },
+  { v: `${site.reviewCount}`, l: "Five-Star Reviews" },
+  { v: "30+", l: "Services" },
+  { v: "Dallas", l: "Service Area" },
+];
+---
+
+<section class="bg-bg">
+  <!-- trust strip -->
+  <div class="reveal border-b border-line">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-line sm:grid-cols-4 sm:divide-y-0">
+      {
+        facts.map((f) => (
+          <div class="px-5 py-7 text-center">
+            <p class="font-display text-3xl font-light text-heading">{f.v}</p>
+            <p class="mt-1.5 text-[0.68rem] uppercase tracking-[0.22em] text-muted">
+              {f.l}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+    <div class="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
+      <!-- Brand statement -->
+      <div class="reveal">
+        <p class="eyebrow">Garcia's Wood and More</p>
+        <div class="hairline mt-5"></div>
+        <h2 class="heading-xl mt-6 text-3xl text-heading sm:text-4xl">
+          Architectural Woodwork &amp;
+          <span class="text-gold">Custom Carpentry</span>
+        </h2>
+        <p class="mt-7 max-w-xl text-lg leading-relaxed text-body">
+          Led by {site.craftsman}, Garcia's Wood and More brings honest,
+          precise craftsmanship to every project — from bespoke wardrobes and
+          built-in storage to decks, fencing, drywall and fine finish work.
+          We measure twice, build once, and treat every home like our own.
+        </p>
+        <p class="mt-5 max-w-xl leading-relaxed text-body">
+          Responsive, dependable and meticulous — the reasons neighbors across
+          {site.area} keep coming back.
+        </p>
+      </div>
+
+      <!-- Contact details -->
+      <div class="reveal lg:border-l lg:border-line lg:pl-16" style="transition-delay:120ms">
+        <dl class="space-y-8">
+          {
+            contact.map((c) => (
+              <div>
+                <dt class="font-display text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-gold">
+                  {c.label}
+                </dt>
+                <dd class="mt-2 text-lg text-heading">
+                  {c.href ? (
+                    <a href={c.href} class="transition-colors hover:text-gold">
+                      {c.value}
+                    </a>
+                  ) : (
+                    c.value
+                  )}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+        <a href="#contact" class="btn-outline mt-10">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
