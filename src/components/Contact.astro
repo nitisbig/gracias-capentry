@@ -1,0 +1,57 @@
+---
+import { site } from "../data/site";
+
+const bgImg =
+  "https://images.unsplash.com/photo-1622150162803-c684f81e75c0?auto=format&fit=crop&w=2000&q=80";
+---
+
+<section id="contact" class="relative overflow-hidden py-28 sm:py-36">
+  <div class="absolute inset-0">
+    <img
+      src={bgImg}
+      alt="Workshop full of woodworking tools"
+      class="h-full w-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-ink/90"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-4xl px-5 text-center sm:px-8">
+    <p class="eyebrow reveal">Work With Us</p>
+    <h2 class="reveal heading-xl mt-6 text-4xl text-bone sm:text-5xl lg:text-6xl">
+      Let's Build Something <span class="text-gold">Lasting</span>
+    </h2>
+    <p
+      class="reveal mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-bone/80"
+      style="transition-delay:100ms"
+    >
+      Tell us about your project and we'll get back to you quickly with honest
+      advice and a fair quote. Serving {site.area}.
+    </p>
+
+    <div
+      class="reveal mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+      style="transition-delay:180ms"
+    >
+      <a
+        href={site.phoneHref}
+        class="inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-9 py-4 font-display text-sm font-700 uppercase tracking-[0.18em] text-ink transition-all hover:bg-gold-bright"
+      >
+        Call {site.phone}
+      </a>
+      <a
+        href={`mailto:${site.email}`}
+        class="inline-flex items-center justify-center gap-2 rounded-sm border border-bone/30 px-9 py-4 font-display text-sm font-600 uppercase tracking-[0.18em] text-bone transition-all hover:border-gold hover:text-gold"
+      >
+        Email Us
+      </a>
+    </div>
+
+    <p
+      class="reveal mt-10 text-sm uppercase tracking-[0.2em] text-stone"
+      style="transition-delay:260ms"
+    >
+      Mon–Sat · Free Estimates · Dallas, TX
+    </p>
+  </div>
+</section>

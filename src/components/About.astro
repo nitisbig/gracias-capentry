@@ -1,0 +1,75 @@
+---
+import { site } from "../data/site";
+
+const aboutImg =
+  "https://images.unsplash.com/photo-1601564921647-b446839a013f?auto=format&fit=crop&w=1200&q=80";
+
+const stats = [
+  { value: site.rating, label: "Google Rating" },
+  { value: `${site.reviewCount}`, label: "Five-Star Reviews" },
+  { value: "30+", label: "Services Offered" },
+];
+---
+
+<section id="about" class="relative bg-ink py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+      <!-- Image -->
+      <div class="reveal relative">
+        <div class="overflow-hidden rounded-sm">
+          <img
+            src={aboutImg}
+            alt="Detailed handcrafted wooden cabinetry"
+            class="aspect-[4/5] w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="absolute -bottom-6 -right-4 hidden rounded-sm border border-gold/40 bg-ink-soft px-8 py-6 sm:block"
+        >
+          <p class="font-display text-4xl font-700 text-gold">★★★★★</p>
+          <p class="mt-1 text-xs uppercase tracking-[0.2em] text-stone">
+            Rated {site.rating} by clients
+          </p>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="reveal" style="transition-delay:120ms">
+        <p class="eyebrow">About Garcia's Wood and More</p>
+        <div class="hairline mt-5"></div>
+        <h2 class="heading-xl mt-6 text-4xl text-bone sm:text-5xl">
+          Superior Craftsmanship,
+          <span class="text-gold">One Detail at a Time</span>
+        </h2>
+        <p class="mt-7 text-lg leading-relaxed text-bone/75">
+          Garcia's Wood and More is a Dallas-based carpentry shop built on
+          precision, responsiveness and genuine care for every project. Led by
+          {site.craftsman}, we handle everything from custom closets and
+          shelving to decks, fencing, drywall and remodeling.
+        </p>
+        <p class="mt-5 leading-relaxed text-stone">
+          Clients keep coming back for the same reasons: quality work, fair
+          pricing, and a craftsman who shows up on time and gets the dimensions
+          exactly right. Whether it's a single repair or a full custom build, the
+          standard never changes.
+        </p>
+
+        <dl class="mt-10 grid grid-cols-3 gap-6 border-t border-bone/10 pt-8">
+          {
+            stats.map((s) => (
+              <div>
+                <dt class="font-display text-3xl font-700 text-gold sm:text-4xl">
+                  {s.value}
+                </dt>
+                <dd class="mt-1 text-xs uppercase tracking-[0.18em] text-stone">
+                  {s.label}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
