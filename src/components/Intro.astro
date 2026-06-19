@@ -3,15 +3,15 @@ import { site } from "../data/site";
 
 const contact = [
   { label: "Phone", value: site.phone, href: site.phoneHref },
-  { label: "Email", value: site.email, href: `mailto:${site.email}` },
-  { label: "Service Area", value: site.area, href: null },
+  { label: "Owner", value: site.craftsman, href: null },
+  { label: "Service Area", value: site.areaLong, href: null },
 ];
 
 const facts = [
   { v: `${site.rating}★`, l: "Google Rating" },
   { v: `${site.reviewCount}`, l: "Five-Star Reviews" },
-  { v: "30+", l: "Services" },
-  { v: "Dallas", l: "Service Area" },
+  { v: "15+", l: "Services" },
+  { v: site.area, l: "Service Area" },
 ];
 ---
 
@@ -36,16 +36,16 @@ const facts = [
     <div class="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
       <!-- Brand statement -->
       <div class="reveal">
-        <p class="eyebrow">Garcia's Wood and More</p>
+        <p class="eyebrow">{site.shortName}</p>
         <div class="hairline mt-5"></div>
         <h2 class="heading-xl mt-6 text-3xl text-heading sm:text-4xl">
-          Architectural Woodwork &amp;
-          <span class="text-gold">Custom Carpentry</span>
+          Quality Painting &amp;
+          <span class="text-gold">Carpentry</span>
         </h2>
         <p class="mt-7 max-w-xl text-lg leading-relaxed text-body">
-          Led by {site.craftsman}, Garcia's Wood and More brings honest,
-          precise craftsmanship to every project — from bespoke wardrobes and
-          built-in storage to decks, fencing, drywall and fine finish work.
+          Led by {site.craftsman}, The Maintenance Man brings honest, precise
+          workmanship to every project — from interior and exterior painting to
+          decks, fencing, flooring, tile, remodels and dependable repairs.
           We measure twice, build once, and treat every home like our own.
         </p>
         <p class="mt-5 max-w-xl leading-relaxed text-body">

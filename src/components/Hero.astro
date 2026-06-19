@@ -1,8 +1,7 @@
 ---
 import { site } from "../data/site";
 
-const heroImg =
-  "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=2000&q=80";
+const heroImg = "/works/tenth.webp";
 ---
 
 <section
@@ -13,7 +12,7 @@ const heroImg =
   <div class="absolute inset-0">
     <img
       src={heroImg}
-      alt="Hand-finished fine woodwork in the workshop"
+      alt="A freshly painted craftsman home with a finished front porch"
       class="h-full w-full object-cover opacity-25"
       fetchpriority="high"
     />
@@ -30,11 +29,11 @@ const heroImg =
     <span
       class="mx-auto grid h-16 w-16 place-items-center border border-gold/70 font-display text-2xl font-light tracking-tight text-gold"
     >
-      G
+      {site.monogram}
     </span>
 
     <h1 class="heading-xl heading-hero mt-9 text-white">
-      Garcia's Wood<br class="hidden sm:block" /> and More
+      The Maintenance<br class="hidden sm:block" /> Man
     </h1>
 
     <p
@@ -45,8 +44,8 @@ const heroImg =
     </p>
 
     <p class="mx-auto mt-7 max-w-xl text-base leading-relaxed text-white/70">
-      Custom carpentry, wardrobes, decks and finish work — handcrafted with
-      precision for homes across {site.area}.
+      Painting, carpentry, remodeling and dependable home repairs — done with
+      precision and care for homes across {site.area}.
     </p>
 
     <div

@@ -1,87 +1,82 @@
 export const site = {
-  name: "Garcia's Wood and More",
-  shortName: "Garcia's Wood & More",
-  tagline: "Architectural Woodwork & Custom Carpentry",
-  craftsman: "Ricardo",
-  phone: "+1 469-661-4839",
-  phoneHref: "tel:+14696614839",
-  area: "Dallas & nearby areas",
+  name: "The Maintenance Man Painting and Carpentry",
+  shortName: "The Maintenance Man",
+  monogram: "M",
+  tagline: "Painting & Carpentry",
+  craftsman: "Larry",
+  phone: "+1 601-310-2598",
+  phoneHref: "tel:+16013102598",
+  area: "Mississippi",
+  areaLong: "Mississippi & surrounding areas",
   rating: "5.0",
-  reviewCount: 13,
-  email: "hello@garciaswoodandmore.com",
+  reviewCount: 18,
 };
 
 export type ServiceGroup = {
   title: string;
   blurb: string;
-  icon: "wardrobe" | "deck" | "trim" | "remodel" | "repair";
+  icon: "paint" | "deck" | "floor" | "remodel" | "repair";
   items: string[];
 };
 
 export const serviceGroups: ServiceGroup[] = [
   {
-    title: "Custom Wardrobes & Storage",
+    title: "Interior & Exterior Painting",
     blurb:
-      "Built-in closets, shelving and storage designed around your space and finished to last.",
-    icon: "wardrobe",
+      "Clean lines, even coats and color matched to perfection — inside and out, finished with care.",
+    icon: "paint",
     items: [
-      "Custom wardrobe design & installation",
-      "Wardrobe construction & installation",
-      "Wardrobe repair",
-      "Shelving & storage construction",
-      "Shelving & storage repair",
+      "Interior painting",
+      "Exterior painting",
+      "Drywall & mud repair",
+      "Interior decorating",
     ],
   },
   {
     title: "Decks & Fencing",
     blurb:
-      "Outdoor structures built for Texas weather — clean lines, solid joinery, and lasting protection.",
+      "Privacy fences, decks and porches built to stand up to the seasons and look great doing it.",
     icon: "deck",
     items: [
-      "Deck construction",
-      "Deck repair",
-      "Fencing construction & installation",
-      "Fencing repair",
+      "Build privacy fences",
+      "Deck construction & rebuilds",
+      "Porches & steps",
+      "General construction",
     ],
   },
   {
-    title: "Finish & Trim Carpentry",
+    title: "Flooring & Tile",
     blurb:
-      "The detail work that elevates a room — precise trim, finish carpentry and rough framing alike.",
-    icon: "trim",
+      "From floor fitting to fresh tile work — a solid, level foundation for every room.",
+    icon: "floor",
     items: [
-      "Finish carpentry services",
-      "Trim carpentry services",
-      "Rough carpentry services",
-      "General carpentry & cabinetry",
-      "Furniture assembly",
+      "Floor fitting",
+      "Flooring repair",
+      "Tile work installation",
     ],
   },
   {
-    title: "Drywall & Remodeling",
+    title: "Remodeling & Renovation",
     blurb:
-      "From a single wall to a full room refresh — drywall, flooring, tile and interior finishes.",
+      "Kitchens, baths and full-room refreshes — cabinets, counters, built-ins and finish work.",
     icon: "remodel",
     items: [
-      "Drywall installation & repair",
       "Remodeling",
-      "Floor fitting & flooring repair",
-      "Tile work installation & replacement",
-      "Interior decorating",
-      "Exterior painting",
+      "General construction",
+      "Cabinets & built-ins",
+      "Custom carpentry",
     ],
   },
   {
-    title: "Repairs & Installs",
+    title: "Repairs & Installations",
     blurb:
-      "The reliable fixes and mounts every home needs, done right the first time.",
+      "The dependable fixes and installs every home needs — done right the first time.",
     icon: "repair",
     items: [
-      "TV mounting",
+      "General repairs",
       "Fan installation",
       "Plumbing fixture installation",
-      "Gutter cleaning",
-      "Repairs & maintenance",
+      "Water fixture repair",
     ],
   },
 ];
@@ -94,33 +89,102 @@ export type Review = {
 
 export const reviews: Review[] = [
   {
-    name: "Gloria Gamino",
+    name: "Susette Clark-Walker",
     quote:
-      "In love with my custom closets! I have so much extra space. Ricardo did an amazing job!",
-    service: "Custom wardrobe design & installation",
+      "An amazing experience working with Larry! He painted both the interior and exterior beautifully, installed new cabinets, doors and drawers, and updated the lighting throughout. Reliable, easy to communicate with, and truly went above and beyond. Highly recommend!",
+    service: "Interior & exterior painting",
   },
   {
-    name: "Gloria Santelices",
+    name: "Elisabeth Palchak",
     quote:
-      "He did a very good job putting the shelves in our laundry room. Very quick and loved the outcome.",
-    service: "Shelving & storage installation",
+      "A good, reliable handyman is hard to find. Larry and his team were professional, punctual and knowledgeable with great attention to detail. They did mud work, painted my kitchen, repaired outdoor rot, and replaced and fixed doors. Honest and fair priced — I highly recommend!",
+    service: "Painting & repairs",
   },
   {
-    name: "R Pepito",
+    name: "Becky Ryder",
     quote:
-      "We got a table resized and refurbished. He did an amazing job on it. Very respectful and knowledgeable with the things he does.",
-    service: "Furniture refurbishing",
+      "I have used Larry and his helper for about 5 years. He painted the interior and exterior, rebuilt and painted a deck, hung stained glass artwork, and installed a storm door. He is my go-to guy for home repair. Enough said!",
+    service: "Painting & deck rebuild",
   },
   {
-    name: "Christa Egusquiza",
+    name: "Darnicka Collins",
     quote:
-      "On-the-dot precision with the dimensions I wanted. I called, we set up the appointment that same day, and I got the table back that same night — with delivery, a great price, and real care. Don't risk your project elsewhere.",
-    service: "Custom carpentry",
+      "I recently got the interior of my house painted and they did a great job! Very professional and respectful. I wanted to be in my house by Christmas and he got the job done in a timely manner. The colors match perfect — just what I asked for. Highly recommend!",
+    service: "Interior painting",
   },
   {
-    name: "Debbie Price",
+    name: "Galit Kaunitz",
     quote:
-      "He did a great job! Very responsive and dependable and great quality work! I would definitely use him again!",
-    service: "Repairs & maintenance",
+      "Larry and Craig did such a wonderful job painting our living and dining rooms, installing new light fixtures, and screening the porch. Professional, reliable and knowledgeable craftsmen — plus they're great people. We'll absolutely have them back!",
+    service: "Painting & installations",
+  },
+  {
+    name: "Ashley Butterworth",
+    quote:
+      "I started knowing absolutely nothing about home repair. Finding The Maintenance Man team was a blessing! Every detail of my project was handled with professionalism and care. An honest team that does excellent work at a fair price.",
+    service: "Home repair & remodeling",
   },
 ];
+
+export type Project = {
+  img: string;
+  label: string;
+  category: "Painting" | "Remodeling" | "Flooring" | "Decks & Fencing" | "Carpentry";
+};
+
+export const projects: Project[] = [
+  {
+    img: "/works/third.webp",
+    label: "Kitchen Remodel",
+    category: "Remodeling",
+  },
+  {
+    img: "/works/sceond.webp",
+    label: "Exterior Repaint",
+    category: "Painting",
+  },
+  {
+    img: "/works/seventh.webp",
+    label: "Living Room & Built-Ins",
+    category: "Flooring",
+  },
+  {
+    img: "/works/fourth.webp",
+    label: "Privacy Fence",
+    category: "Decks & Fencing",
+  },
+  {
+    img: "/works/tenth.webp",
+    label: "Craftsman Porch",
+    category: "Painting",
+  },
+  {
+    img: "/works/first.webp",
+    label: "Covered Porch & Deck",
+    category: "Decks & Fencing",
+  },
+  {
+    img: "/works/fifth.webp",
+    label: "Front Porch & Steps",
+    category: "Decks & Fencing",
+  },
+  {
+    img: "/works/ninth.webp",
+    label: "Custom Crib Build",
+    category: "Carpentry",
+  },
+  {
+    img: "/works/sixth.webp",
+    label: "Backyard Deck",
+    category: "Decks & Fencing",
+  },
+];
+
+export const categories = [
+  "All",
+  "Painting",
+  "Remodeling",
+  "Flooring",
+  "Decks & Fencing",
+  "Carpentry",
+] as const;

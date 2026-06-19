@@ -5,7 +5,7 @@ const year = new Date().getFullYear();
 const links = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
+  { href: "#work", label: "Gallery" },
   { href: "#reviews", label: "Reviews" },
   { href: "#contact", label: "Contact" },
 ];
@@ -17,7 +17,7 @@ const links = [
     <div class="flex flex-col items-center text-center">
       <span
         class="grid h-14 w-14 place-items-center border border-gold/50 font-display text-xl font-light text-gold"
-        >G</span
+        >{site.monogram}</span
       >
       <p
         class="mt-5 font-display text-sm font-semibold uppercase tracking-[0.3em] text-heading"
@@ -57,9 +57,7 @@ const links = [
         {site.phone}
       </a>
       <span class="hidden h-3 w-px bg-line sm:block"></span>
-      <a href={`mailto:${site.email}`} class="transition-colors hover:text-gold">
-        {site.email}
-      </a>
+      <span>{site.areaLong}</span>
     </div>
   </div>
 
@@ -69,7 +67,7 @@ const links = [
       class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-7 text-xs text-muted sm:flex-row sm:px-8"
     >
       <p>© {year} {site.name}. All rights reserved.</p>
-      <p class="uppercase tracking-[0.24em]">Crafted in Dallas, Texas</p>
+      <p class="uppercase tracking-[0.24em]">Proudly serving {site.area}</p>
     </div>
   </div>
 </footer>

@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = `${site.name} — ${site.tagline}`,
-  description = `${site.name}: custom carpentry, wardrobes, decks, fencing, drywall and remodeling serving ${site.area}. Rated ${site.rating} stars. Call ${site.phone}.`,
+  description = `${site.name}: interior & exterior painting, carpentry, decks, fencing, flooring, remodeling and home repairs serving ${site.area}. Rated ${site.rating} stars. Call ${site.phone}.`,
 } = Astro.props;
 
 const canonical = Astro.site
@@ -22,11 +22,10 @@ const jsonLd = {
   name: site.name,
   description,
   telephone: site.phone,
-  areaServed: "Dallas, TX",
+  areaServed: "Mississippi",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Dallas",
-    addressRegion: "TX",
+    addressRegion: "MS",
     addressCountry: "US",
   },
   aggregateRating: {

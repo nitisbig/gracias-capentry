@@ -1,13 +1,12 @@
 ---
 import { site, serviceGroups } from "../data/site";
 
-const aboutImg =
-  "https://images.unsplash.com/photo-1601564921647-b446839a013f?auto=format&fit=crop&w=1200&q=80";
+const aboutImg = "/works/third.webp";
 
 const stats = [
   { value: site.rating, label: "Google Rating" },
   { value: `${site.reviewCount}`, label: "Five-Star Reviews" },
-  { value: "30+", label: "Services Offered" },
+  { value: "15+", label: "Services Offered" },
 ];
 ---
 
@@ -17,7 +16,7 @@ const stats = [
     <p
       class="font-display text-[0.7rem] font-semibold uppercase tracking-[0.34em] text-white/70"
     >
-      Why Garcia's
+      Why The Maintenance Man
     </p>
     <h2 class="heading-band mt-6 text-3xl sm:text-5xl">Superior Craftsmanship</h2>
     <p class="mx-auto mt-8 max-w-2xl leading-relaxed text-white/80">
@@ -37,7 +36,7 @@ const stats = [
         <div class="overflow-hidden">
           <img
             src={aboutImg}
-            alt="Detailed handcrafted wooden cabinetry"
+            alt="A remodeled kitchen with fresh cabinets, counters and tile"
             class="aspect-[4/5] w-full object-cover"
             loading="lazy"
           />
@@ -57,12 +56,12 @@ const stats = [
         <p class="eyebrow">What We Do</p>
         <div class="hairline mt-5"></div>
         <h3 class="heading-xl mt-6 text-3xl text-heading sm:text-4xl">
-          One Craftsman, <span class="text-gold">Every Detail</span>
+          One Team, <span class="text-gold">Every Detail</span>
         </h3>
         <p class="mt-7 text-lg leading-relaxed text-body">
-          From the framing behind your walls to the trim you run your hand
-          along, Garcia's Wood and More covers the full range of carpentry and
-          home craftsmanship:
+          From a fresh coat of paint to decks, flooring and full remodels,
+          {site.craftsman} and his team cover the full range of home
+          improvement and repair:
         </p>
 
         <ul class="mt-7 grid gap-x-8 gap-y-3 sm:grid-cols-2">

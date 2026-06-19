@@ -1,20 +1,5 @@
 ---
-import { site } from "../data/site";
-
-const projects = [
-  {
-    img: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1000&q=80",
-    label: "Custom Wardrobes",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1000&q=80",
-    label: "Shelving & Storage",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80",
-    label: "Finish & Trim",
-  },
-];
+import { site, projects, categories } from "../data/site";
 ---
 
 <!-- Taupe monogram band -->
@@ -22,13 +7,13 @@ const projects = [
   <div class="reveal mx-auto max-w-4xl px-6">
     <span
       class="mx-auto grid h-16 w-16 place-items-center border border-white/60 font-display text-2xl font-light text-white"
-      >G</span
+      >{site.monogram}</span
     >
     <p class="heading-band mt-8 text-xl sm:text-2xl">
-      Residential &nbsp;|&nbsp; Custom Builds &nbsp;|&nbsp; Repairs
+      Painting &nbsp;|&nbsp; Carpentry &nbsp;|&nbsp; Repairs
     </p>
     <p class="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/75">
-      Trusted by homeowners across {site.area} for woodwork that lasts.
+      Trusted by homeowners across {site.area} for work that lasts.
     </p>
   </div>
 </section>
@@ -40,37 +25,250 @@ const projects = [
       <p class="eyebrow">Selected Work</p>
       <div class="hairline mx-auto mt-5"></div>
       <h2 class="heading-xl mt-6 text-3xl text-heading sm:text-5xl">
-        A Few Things <span class="text-gold">We've Made</span>
+        Our Recent <span class="text-gold">Projects</span>
       </h2>
+      <p class="mt-6 text-lg leading-relaxed text-body">
+        A look at real homes we've painted, built and remodeled across {site.area}.
+        Tap any photo to view it full size.
+      </p>
     </div>
 
-    <div class="mt-16 grid gap-6 md:grid-cols-3">
+    <!-- Filter tabs -->
+    <div
+      class="reveal mt-12 flex flex-wrap items-center justify-center gap-x-2 gap-y-3"
+      data-filters
+    >
+      {
+        categories.map((cat, i) => (
+          <button
+            type="button"
+            data-filter={cat}
+            aria-pressed={i === 0 ? "true" : "false"}
+            class="filter-pill font-display text-[0.68rem] font-semibold uppercase tracking-[0.18em]"
+          >
+            {cat}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Masonry gallery -->
+    <div
+      class="mt-12 columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5"
+      data-gallery
+    >
       {
         projects.map((p, i) => (
           <figure
-            class="reveal group"
-            style={`transition-delay:${i * 90}ms`}
+            class="reveal group relative block w-full break-inside-avoid overflow-hidden border border-line"
+            data-item
+            data-category={p.category}
+            style={`transition-delay:${(i % 3) * 80}ms`}
           >
-            <div class="overflow-hidden">
+            <button
+              type="button"
+              class="block w-full cursor-zoom-in"
+              data-lightbox
+              data-src={p.img}
+              data-label={p.label}
+              data-cat={p.category}
+              aria-label={`View ${p.label} full size`}
+            >
               <img
                 src={p.img}
-                alt={p.label}
+                alt={`${p.label} — ${p.category} by ${site.shortName}`}
                 loading="lazy"
-                class="aspect-[4/5] w-full object-cover grayscale-[15%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                class="w-full object-cover grayscale-[12%] transition-all duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
               />
-            </div>
-            <figcaption
-              class="mt-5 text-center font-display text-xs font-semibold uppercase tracking-[0.26em] text-heading"
-            >
-              {p.label}
-            </figcaption>
+              {/* gradient + caption */}
+              <span
+                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/85 via-espresso/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+              <span class="pointer-events-none absolute inset-x-0 bottom-0 translate-y-3 p-6 text-left opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                <span class="block font-display text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-gold-bright">
+                  {p.category}
+                </span>
+                <span class="mt-1.5 block font-display text-lg font-light uppercase tracking-[0.1em] text-white">
+                  {p.label}
+                </span>
+              </span>
+              {/* corner zoom hint */}
+              <span class="pointer-events-none absolute right-4 top-4 grid h-9 w-9 translate-y-[-6px] place-items-center bg-white/90 text-heading opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
           </figure>
         ))
       }
     </div>
+
+    <p
+      class="mt-10 hidden text-center text-sm text-muted"
+      data-empty
+    >
+      No projects in this category yet.
+    </p>
 
     <div class="reveal mt-16 text-center">
       <a href="#contact" class="btn-outline">Start Your Project</a>
     </div>
   </div>
 </section>
+
+<!-- Lightbox -->
+<div
+  data-lb
+  class="fixed inset-0 z-[80] hidden items-center justify-center bg-espresso/95 p-4 sm:p-8"
+  aria-hidden="true"
+>
+  <button
+    type="button"
+    data-lb-close
+    aria-label="Close"
+    class="absolute right-5 top-5 grid h-11 w-11 place-items-center border border-white/30 text-white/80 transition-colors hover:border-white hover:text-white"
+  >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+  </button>
+
+  <button
+    type="button"
+    data-lb-prev
+    aria-label="Previous"
+    class="absolute left-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center text-white/70 transition-colors hover:text-white sm:left-6"
+  >
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <button
+    type="button"
+    data-lb-next
+    aria-label="Next"
+    class="absolute right-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center text-white/70 transition-colors hover:text-white sm:right-6"
+  >
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+
+  <figure class="mx-auto flex max-h-full max-w-5xl flex-col items-center">
+    <img
+      data-lb-img
+      src=""
+      alt=""
+      class="max-h-[78vh] w-auto max-w-full border border-white/10 object-contain"
+    />
+    <figcaption class="mt-5 text-center">
+      <span
+        data-lb-cat
+        class="block font-display text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-gold-bright"
+      ></span>
+      <span
+        data-lb-label
+        class="mt-1.5 block font-display text-base font-light uppercase tracking-[0.14em] text-white"
+      ></span>
+    </figcaption>
+  </figure>
+</div>
+
+<style>
+  .filter-pill {
+    padding: 0.6rem 1.25rem;
+    color: var(--color-muted);
+    border: 1px solid transparent;
+    transition: all 0.35s ease;
+  }
+  .filter-pill:hover {
+    color: var(--color-heading);
+  }
+  .filter-pill[aria-pressed="true"] {
+    color: #fff;
+    background: var(--color-heading);
+    border-color: var(--color-heading);
+  }
+  [data-item].is-hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  // ---- Category filtering ----
+  const filterWrap = document.querySelector("[data-filters]");
+  const items = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-gallery] [data-item]")
+  );
+  const empty = document.querySelector<HTMLElement>("[data-empty]");
+
+  const applyFilter = (cat: string) => {
+    let visible = 0;
+    for (const item of items) {
+      const match = cat === "All" || item.dataset.category === cat;
+      item.classList.toggle("is-hidden", !match);
+      if (match) visible++;
+    }
+    if (empty) empty.classList.toggle("hidden", visible !== 0);
+  };
+
+  filterWrap?.addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(
+      "[data-filter]"
+    );
+    if (!btn) return;
+    for (const b of filterWrap.querySelectorAll("[data-filter]"))
+      b.setAttribute("aria-pressed", "false");
+    btn.setAttribute("aria-pressed", "true");
+    applyFilter(btn.dataset.filter || "All");
+  });
+
+  // ---- Lightbox ----
+  const lb = document.querySelector<HTMLElement>("[data-lb]");
+  const lbImg = document.querySelector<HTMLImageElement>("[data-lb-img]");
+  const lbLabel = document.querySelector<HTMLElement>("[data-lb-label]");
+  const lbCat = document.querySelector<HTMLElement>("[data-lb-cat]");
+  const triggers = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-lightbox]")
+  );
+  let current = 0;
+
+  const visibleTriggers = () =>
+    triggers.filter((t) => !t.closest("[data-item]")?.classList.contains("is-hidden"));
+
+  const show = (list: HTMLButtonElement[], idx: number) => {
+    const t = list[(idx + list.length) % list.length];
+    if (!t || !lbImg || !lbLabel || !lbCat) return;
+    current = (idx + list.length) % list.length;
+    lbImg.src = t.dataset.src || "";
+    lbImg.alt = t.dataset.label || "";
+    lbLabel.textContent = t.dataset.label || "";
+    lbCat.textContent = t.dataset.cat || "";
+  };
+
+  const open = (t: HTMLButtonElement) => {
+    const list = visibleTriggers();
+    show(list, list.indexOf(t));
+    lb?.classList.remove("hidden");
+    lb?.classList.add("flex");
+    lb?.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+  const close = () => {
+    lb?.classList.add("hidden");
+    lb?.classList.remove("flex");
+    lb?.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  for (const t of triggers) t.addEventListener("click", () => open(t));
+  document.querySelector("[data-lb-close]")?.addEventListener("click", close);
+  document
+    .querySelector("[data-lb-prev]")
+    ?.addEventListener("click", () => show(visibleTriggers(), current - 1));
+  document
+    .querySelector("[data-lb-next]")
+    ?.addEventListener("click", () => show(visibleTriggers(), current + 1));
+  lb?.addEventListener("click", (e) => {
+    if (e.target === lb) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (lb?.classList.contains("hidden")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") show(visibleTriggers(), current - 1);
+    if (e.key === "ArrowRight") show(visibleTriggers(), current + 1);
+  });
+</script>

@@ -1,50 +1,34 @@
 ---
 import "../styles/light.css";
-import { site, serviceGroups, reviews } from "../data/site";
+import { site, serviceGroups, reviews, projects } from "../data/site";
 
 const title = `${site.name} — ${site.tagline}`;
-const description = `${site.name}: custom carpentry, wardrobes, decks, fencing, drywall and remodeling serving ${site.area}. Rated ${site.rating} stars. Call ${site.phone}.`;
+const description = `${site.name}: interior & exterior painting, carpentry, decks, fencing, flooring, remodeling and home repairs serving ${site.area}. Rated ${site.rating} stars. Call ${site.phone}.`;
 
-const heroImg =
-  "https://images.unsplash.com/photo-1601564921647-b446839a013f?auto=format&fit=crop&w=1400&q=80";
-const aboutImg =
-  "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1400&q=80";
+const heroImg = "/works/tenth.webp";
+const aboutImg = "/works/third.webp";
 
-const work = [
-  {
-    img: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1100&q=80",
-    label: "Built-in Wardrobes",
-    span: "lg:col-span-2 lg:row-span-2",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
-    label: "Workshop Detail",
-    span: "",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=80",
-    label: "Shelving & Storage",
-    span: "",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80",
-    label: "Custom Cabinetry",
-    span: "",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=80",
-    label: "Finish & Trim",
-    span: "",
-  },
+// Bento layout spans for the work grid, matched to the projects[] order.
+const spans = [
+  "lg:col-span-2 lg:row-span-2",
+  "",
+  "lg:col-span-2",
+  "",
+  "",
+  "",
+  "lg:row-span-2",
+  "",
+  "lg:col-span-2",
 ];
+const work = projects.map((p, i) => ({ ...p, span: spans[i] ?? "" }));
 
 const icons: Record<string, string> = {
-  wardrobe:
-    '<path d="M5 3h14v18H5z"/><path d="M12 3v18"/><path d="M9.5 11v2"/><path d="M14.5 11v2"/>',
+  paint:
+    '<rect x="3" y="4" width="13" height="6" rx="1"/><path d="M16 7h3a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-7v3"/><rect x="9" y="16" width="4" height="5" rx="1"/>',
   deck:
     '<path d="M3 7h18"/><path d="M3 12h18"/><path d="M3 17h18"/><path d="M6 7v10"/><path d="M18 7v10"/>',
-  trim:
-    '<path d="M3 21 21 3"/><path d="M14 4l6 6"/><path d="M4 14l6 6"/>',
+  floor:
+    '<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M3 15h18M9 4v6M15 10v5M7 15v5M13 4v6"/>',
   remodel:
     '<path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/>',
   repair:
@@ -57,11 +41,10 @@ const jsonLd = {
   name: site.name,
   description,
   telephone: site.phone,
-  areaServed: "Dallas, TX",
+  areaServed: "Mississippi",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Dallas",
-    addressRegion: "TX",
+    addressRegion: "MS",
     addressCountry: "US",
   },
   aggregateRating: {
@@ -74,7 +57,7 @@ const jsonLd = {
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
+  { href: "#work", label: "Gallery" },
   { href: "#reviews", label: "Reviews" },
 ];
 ---
@@ -124,9 +107,9 @@ const navLinks = [
       >
         <a
           href="#top"
-          class="font-display text-xl font-semibold tracking-tight text-walnut"
+          class="font-display text-lg font-semibold tracking-tight text-walnut sm:text-xl"
         >
-          Garcia's<span class="text-honey">.</span>
+          The Maintenance Man<span class="text-honey">.</span>
         </a>
 
         <nav class="hidden items-center gap-9 md:flex">
@@ -204,15 +187,15 @@ const navLinks = [
             <h1
               class="display mt-6 text-5xl text-walnut sm:text-6xl lg:text-7xl"
             >
-              Crafted by hand,
+              Painted by hand,
               <span class="display-ital block text-honey">built to last.</span>
             </h1>
             <p
               class="mt-7 max-w-xl text-lg leading-relaxed text-walnut-soft"
             >
-              From bespoke wardrobes and built-in storage to decks, fencing and
-              fine finish work — {site.name} brings warm, dependable
-              craftsmanship to homes across {site.area}.
+              From interior and exterior painting to decks, fencing, flooring
+              and full remodels — {site.name} brings warm, dependable
+              workmanship to homes across {site.area}.
             </p>
 
             <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -224,10 +207,10 @@ const navLinks = [
                 <svg class="transition-transform group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </a>
               <a
-                href="#contact"
+                href="#work"
                 class="inline-flex items-center justify-center rounded-full border border-walnut/20 px-8 py-4 text-sm font-semibold tracking-wide text-walnut transition-all hover:border-honey hover:text-honey"
               >
-                Request a Quote
+                See Our Work
               </a>
             </div>
 
@@ -248,7 +231,7 @@ const navLinks = [
             >
               <img
                 src={heroImg}
-                alt="Carpenter shaping fine wood in a bright workshop"
+                alt="A freshly painted craftsman home with a finished front porch"
                 class="aspect-[4/5] h-full w-full object-cover"
                 fetchpriority="high"
               />
@@ -285,14 +268,14 @@ const navLinks = [
             Array.from({ length: 2 }).map(() => (
               <span class="flex items-center">
                 {[
-                  "Custom Wardrobes",
+                  "Interior Painting",
+                  "Exterior Painting",
                   "Decks & Fencing",
-                  "Finish Carpentry",
-                  "Drywall & Remodeling",
-                  "Tile Work",
-                  "Furniture Assembly",
-                  "TV Mounting",
-                  "Trim & Detail",
+                  "Flooring & Tile",
+                  "Remodeling",
+                  "Drywall Repair",
+                  "Custom Carpentry",
+                  "Home Repairs",
                 ].map((t) => (
                   <span class="flex items-center">
                     <span class="px-8 font-display text-lg italic">{t}</span>
@@ -314,7 +297,7 @@ const navLinks = [
             <div class="blob-2 relative overflow-hidden shadow-2xl shadow-honey-deep/15">
               <img
                 src={aboutImg}
-                alt="Freshly milled wood and hand tools"
+                alt="A remodeled kitchen with fresh cabinets, counters and tile"
                 class="aspect-square h-full w-full object-cover"
               />
             </div>
@@ -325,7 +308,7 @@ const navLinks = [
           </div>
 
           <div class="reveal order-1 lg:order-2" style="transition-delay:120ms">
-            <p class="eyebrow">The Workshop</p>
+            <p class="eyebrow">The Crew</p>
             <h2 class="display mt-5 text-4xl text-walnut sm:text-5xl">
               Superior craftsmanship,
               <span class="display-ital text-honey">made personal.</span>
@@ -333,9 +316,8 @@ const navLinks = [
             <p class="mt-6 text-lg leading-relaxed text-walnut-soft">
               {site.name} is built on a simple promise from {site.craftsman}:
               measure twice, build once, and treat every home like it's our own.
-              Whether it's a closet that finally fits your life or a deck made
-              for Texas summers, the work is precise, honest, and finished with
-              care.
+              Whether it's a fresh coat of paint or a deck made for Mississippi
+              summers, the work is precise, honest, and finished with care.
             </p>
             <p class="mt-4 text-lg leading-relaxed text-walnut-soft">
               Responsive, dependable, and meticulous — the same reasons
@@ -347,7 +329,7 @@ const navLinks = [
                 [
                   { n: site.rating, l: "Star rating" },
                   { n: `${site.reviewCount}`, l: "Google reviews" },
-                  { n: "30+", l: "Services offered" },
+                  { n: "15+", l: "Services offered" },
                 ].map((s) => (
                   <div class="border-l-2 border-honey/40 pl-4">
                     <dt class="font-display text-4xl font-medium text-walnut">{s.n}</dt>
@@ -369,13 +351,13 @@ const navLinks = [
 
         <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
           <div class="reveal mx-auto max-w-2xl text-center">
-            <p class="eyebrow">What We Build</p>
+            <p class="eyebrow">What We Do</p>
             <h2 class="display mt-5 text-4xl text-walnut sm:text-5xl">
-              One craftsman, <span class="display-ital text-honey">every detail.</span>
+              One team, <span class="display-ital text-honey">every detail.</span>
             </h2>
             <p class="mt-5 text-lg leading-relaxed text-walnut-soft">
-              From the framing behind the walls to the trim you run your hand
-              along — here's how we can help.
+              From a fresh coat of paint to the trim you run your hand along —
+              here's how we can help.
             </p>
           </div>
 
@@ -441,15 +423,18 @@ const navLinks = [
                 >
                   <img
                     src={w.img}
-                    alt={w.label}
+                    alt={`${w.label} — ${w.category} by ${site.shortName}`}
                     loading="lazy"
                     class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div class="absolute inset-0 bg-gradient-to-t from-walnut/70 via-walnut/5 to-transparent opacity-80"></div>
-                  <figcaption
-                    class="absolute bottom-5 left-5 font-display text-lg font-medium text-paper"
-                  >
-                    {w.label}
+                  <figcaption class="absolute bottom-5 left-5 right-5">
+                    <span class="block text-xs font-semibold uppercase tracking-widest text-honey-bright">
+                      {w.category}
+                    </span>
+                    <span class="mt-1 block font-display text-lg font-medium text-paper">
+                      {w.label}
+                    </span>
                   </figcaption>
                 </figure>
               ))
@@ -468,7 +453,7 @@ const navLinks = [
           <div class="reveal mx-auto max-w-2xl text-center">
             <p class="eyebrow">Kind Words</p>
             <h2 class="display mt-5 text-4xl text-walnut sm:text-5xl">
-              Loved by <span class="display-ital text-honey">Dallas homes.</span>
+              Loved by <span class="display-ital text-honey">Mississippi homes.</span>
             </h2>
             <div class="mt-5 flex items-center justify-center gap-3">
               <span class="text-lg tracking-widest text-honey">★★★★★</span>
@@ -544,14 +529,14 @@ const navLinks = [
                   Call {site.phone}
                 </a>
                 <a
-                  href={`mailto:${site.email}`}
+                  href="#work"
                   class="inline-flex items-center justify-center rounded-full border border-walnut/25 bg-warmwhite/60 px-9 py-4 text-sm font-semibold tracking-wide text-walnut backdrop-blur transition-all hover:border-honey hover:text-honey"
                 >
-                  Email Us
+                  See Our Work
                 </a>
               </div>
               <p class="mt-8 text-sm text-walnut-mute">
-                Serving {site.area}
+                Serving {site.areaLong}
               </p>
             </div>
           </div>
@@ -566,7 +551,7 @@ const navLinks = [
       >
         <div>
           <p class="font-display text-2xl font-semibold text-walnut">
-            Garcia's<span class="text-honey">.</span>
+            The Maintenance Man<span class="text-honey">.</span>
           </p>
           <p class="mt-3 max-w-xs text-sm leading-relaxed text-walnut-soft">
             {site.tagline}, handcrafted for homes across {site.area}.
@@ -597,10 +582,8 @@ const navLinks = [
             <li>
               <a href={site.phoneHref} class="transition-colors hover:text-honey">{site.phone}</a>
             </li>
-            <li>
-              <a href={`mailto:${site.email}`} class="transition-colors hover:text-honey">{site.email}</a>
-            </li>
-            <li>{site.area}</li>
+            <li>{site.craftsman}, Owner</li>
+            <li>{site.areaLong}</li>
           </ul>
         </div>
       </div>
