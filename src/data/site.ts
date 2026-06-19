@@ -2,6 +2,7 @@ export const site = {
   name: "The Maintenance Man Painting and Carpentry",
   shortName: "The Maintenance Man",
   monogram: "M",
+  logo: "/logo.jpg",
   tagline: "Painting & Carpentry",
   craftsman: "Larry",
   phone: "+1 601-310-2598",

@@ -15,10 +15,13 @@ const links = [
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <!-- Brand row -->
     <div class="flex flex-col items-center text-center">
-      <span
-        class="grid h-14 w-14 place-items-center border border-gold/50 font-display text-xl font-light text-gold"
-        >{site.monogram}</span
-      >
+      <img
+        src={site.logo}
+        alt={`${site.shortName} logo`}
+        width="72"
+        height="72"
+        class="h-16 w-16 rounded-full object-cover shadow-md ring-1 ring-gold/40"
+      />
       <p
         class="mt-5 font-display text-sm font-semibold uppercase tracking-[0.3em] text-heading"
       >

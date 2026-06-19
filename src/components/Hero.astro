@@ -26,11 +26,14 @@ const heroImg = "/works/tenth.webp";
 
   <!-- Centered editorial content -->
   <div class="reveal relative px-6 text-center">
-    <span
-      class="mx-auto grid h-16 w-16 place-items-center border border-gold/70 font-display text-2xl font-light tracking-tight text-gold"
-    >
-      {site.monogram}
-    </span>
+    <img
+      src={site.logo}
+      alt={`${site.shortName} logo`}
+      width="112"
+      height="112"
+      class="mx-auto h-24 w-24 rounded-full object-cover shadow-2xl ring-2 ring-gold/70 sm:h-28 sm:w-28"
+      fetchpriority="high"
+    />
 
     <h1 class="heading-xl heading-hero mt-9 text-white">
       The Maintenance<br class="hidden sm:block" /> Man

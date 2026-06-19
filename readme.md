@@ -2,7 +2,7 @@
 
 **Niche:** Carpenter  
 **Phone:** +1 601-310-2598
-**Location:** Mississippi
+**Location:** Hattiesburg, MS, United States, 39401
 
 ---
 
